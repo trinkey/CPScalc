@@ -25,19 +25,21 @@ def end():
     global end, display, t, screen, die
     if clicks != 0:
         end = 1
-        screen.onclick(None)
-        time.sleep(0.1)
-        display.clear()
         m = "Your CPS: " + str(round(clicks / (time.time() - t) * 10) / 10)
-        display.clear()
-        display.write(m, align = "center", font = ["Arial", 50, "normal"])
-        display.pu()
-        display.speed(0)
-        display.goto(0, -100)
-        display.color("#999999")
-        display.write("Press space to close.", align = "center", font = ["Arial", 25, "normal"])
-        screen.update()
-        screen.onkey(die, "space")
+        for i in range(2):
+            display.clear()
+            display.write(m, align = "center", font = ["Arial", 50, "normal"])
+            display.pu()
+            display.speed(0)
+            display.goto(0, -100)
+            display.color("#999999")
+            display.write("Press space to close.", align = "center", font = ["Arial", 25, "normal"])
+            screen.update()
+            screen.onkey(die, "space")
+            screen.onclick(None)
+            time.sleep(0.1)
+            display.color("#FFFFFF")
+            display.goto(0, 0)
 
 def die():
     global screen
